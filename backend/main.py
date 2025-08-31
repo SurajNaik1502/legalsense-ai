@@ -3,10 +3,14 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 import uvicorn
 import os
+import logging
 from dotenv import load_dotenv
 from typing import Optional, List
 import uuid
 import json
+
+logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
 
 from services.document_processor import DocumentProcessor
 from services.optimized_analyzer import OptimizedAnalyzer
@@ -116,11 +120,21 @@ async def analyze_document(request: AnalysisRequest):
             request.language
         )
         
-        return AnalysisResponse(
+        # Debug logging
+        logger.info(f"Analysis result: {analysis_result}")
+        logger.info(f"Risks data: {analysis_result.risks}")
+        logger.info(f"Risk categories: {analysis_result.risks.by_category}")
+        
+        response = AnalysisResponse(
             success=True,
             analysis=analysis_result,
             message="Analysis completed successfully (optimized)"
         )
+        
+        # Debug logging of final response
+        logger.info(f"API Response: {response}")
+        
+        return response
         
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

@@ -14,7 +14,31 @@ export interface AnalysisRequest {
 
 export interface AnalysisResponse {
   success: boolean;
-  analysis: any;
+  analysis: {
+    doc: {
+      id: string;
+      title: string;
+      language: string;
+      parties: Array<{name: string; role: string}>;
+      clauses: Array<{
+        id: string;
+        title: string;
+        original_text: string;
+        simplified_text: string;
+        category?: string;
+        risk_level?: string;
+      }>;
+      summary: string;
+      notes?: string[];
+    };
+    risks: {
+      byCategory: Array<{
+        category: string;
+        score: number;
+      }>;
+      recommendations: string[];
+    };
+  };
   message: string;
 }
 

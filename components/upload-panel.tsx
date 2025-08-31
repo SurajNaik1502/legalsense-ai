@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { listSamples } from "@/data/samples/load-samples"
 import { useToast } from "@/hooks/use-toast"
-import type { LanguageCode } from "@/lib/types"
+import type { LanguageCode, AnalysisResult } from "@/lib/types"
 
 const samples = listSamples()
 
@@ -22,57 +22,85 @@ export function UploadPanel() {
   const [currentDocumentId, setCurrentDocumentId] = useState<string | undefined>(undefined)
 
   async function handleProcess() {
+    if (!file && !sampleId) {
+      toast({
+        title: "Error",
+        description: "Please select a file or choose a sample document.",
+        variant: "destructive",
+      })
+      return
+    }
+
     try {
       setLoading(true)
       
       if (file) {
+        // Validate file size (max 10MB)
+        const maxSize = 10 * 1024 * 1024 // 10MB in bytes
+        if (file.size > maxSize) {
+          throw new Error("File size exceeds 10MB limit")
+        }
+
         // Upload and process real document
         const uploadResponse = await apiService.uploadDocument(file, language)
+        if (!uploadResponse.success) {
+          throw new Error(uploadResponse.message || "Failed to upload document")
+        }
+        
         setCurrentDocumentId(uploadResponse.document_id)
+        
+        // Check document info and status
+        const docInfo = await apiService.getDocumentInfo(uploadResponse.document_id)
+        if (!docInfo.success || docInfo.document_info.processing_status === 'failed') {
+          throw new Error("Document processing failed")
+        }
         
         // Analyze the uploaded document
         const analysisResponse = await apiService.analyzeDocument(uploadResponse.document_id, language)
-        
-        if (analysisResponse.success) {
-          setDoc(analysisResponse.analysis.doc)
-          setAnalysis(analysisResponse.analysis)
-          
-          toast({
-            title: "Success",
-            description: "Document processed successfully!",
-          })
-        } else {
-          throw new Error(analysisResponse.message)
+        if (!analysisResponse.success || !analysisResponse.analysis) {
+          throw new Error(analysisResponse.message || "Analysis failed")
         }
+        
+        setDoc(analysisResponse.analysis.doc)
+        setAnalysis(analysisResponse.analysis)
+        
+        toast({
+          title: "Success",
+          description: "Document processed successfully!",
+          duration: 3000,
+        })
       } else if (sampleId) {
         // Use sample data for demonstration
         const sample = samples.find(s => s.id === sampleId)
-        if (sample) {
-          setDoc(sample)
-          // Create a mock analysis result for samples
-          const mockAnalysis = {
-            doc: sample,
-            risks: {
-              by_category: [
-                { category: "Financial", score: 25 },
-                { category: "Legal", score: 30 },
-                { category: "Compliance", score: 20 },
-                { category: "Termination", score: 15 }
-              ],
-              recommendations: [
-                "Standard terms detected",
-                "Consider legal review for compliance",
-                "Monitor termination clauses"
-              ]
-            }
-          }
-          setAnalysis(mockAnalysis)
-          
-          toast({
-            title: "Sample Loaded",
-            description: "Sample document loaded for demonstration.",
-          })
+        if (!sample) {
+          throw new Error("Sample document not found")
         }
+
+        setDoc(sample)
+        // Create a mock analysis result for samples
+        const mockAnalysis: AnalysisResult = {
+          doc: sample,
+          risks: {
+            byCategory: [
+              { category: "Financial", score: 25 },
+              { category: "Legal", score: 30 },
+              { category: "Compliance", score: 20 },
+              { category: "Termination", score: 15 }
+            ],
+            recommendations: [
+              "Standard terms detected",
+              "Consider legal review for compliance",
+              "Monitor termination clauses"
+            ]
+          }
+        }
+        setAnalysis(mockAnalysis)
+        
+        toast({
+          title: "Sample Loaded",
+          description: "Sample document loaded for demonstration.",
+          duration: 3000,
+        })
       }
     } catch (e) {
       console.error("[v0] analyze error", e)
