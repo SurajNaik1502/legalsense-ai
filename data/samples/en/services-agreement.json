@@ -1,0 +1,32 @@
+{
+  "id": "sample-en-services",
+  "title": "Professional Services Agreement",
+  "language": "en",
+  "parties": [{ "name": "Vendor Co.", "role": "Vendor" }, { "name": "Customer Inc.", "role": "Customer" }],
+  "effectiveDate": "2025-02-10",
+  "obligations": [
+    "Vendor shall deliver milestones as per SOW.",
+    "Customer must pay within 30 days of invoice.",
+    "Arbitration applies to disputes."
+  ],
+  "clauses": [
+    {
+      "id": "c-1",
+      "title": "Payment Terms",
+      "originalText": "Invoices payable net 30. Late fee of 2% per month will apply thereafter.",
+      "simplifiedText": "Pay within 30 days; late payments add 2% per month.",
+      "category": "Financial",
+      "riskLevel": "Medium"
+    },
+    {
+      "id": "c-2",
+      "title": "Arbitration",
+      "originalText": "Disputes will be resolved by binding arbitration in New Delhi.",
+      "simplifiedText": "Disputes go to arbitration in New Delhi.",
+      "category": "Legal",
+      "riskLevel": "High"
+    }
+  ],
+  "summary": "Covers payments, scope of work, and dispute resolution via arbitration.",
+  "notes": ["Clarify arbitration rules and seat.", "Negotiate late fee cap."]
+}

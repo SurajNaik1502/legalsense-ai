@@ -1,0 +1,28 @@
+{
+  "id": "sample-mr-rental",
+  "title": "भाडेकरार",
+  "language": "mr",
+  "parties": [{ "name": "मालक", "role": "Lessor" }, { "name": "भाडेकरू", "role": "Lessee" }],
+  "effectiveDate": "2025-01-15",
+  "obligations": ["भाडेकरू दरमहिना वेळेवर भाडे देईल.", "परिसर चांगल्या स्थितीत ठेवणे आवश्यक आहे."],
+  "clauses": [
+    {
+      "id": "c-1",
+      "title": "भाडे व देयक",
+      "originalText": "भाडे महिन्याच्या 1 तारखेला देय. 5 नंतर लेट फी लागू.",
+      "simplifiedText": "वेळेवर भाडे द्या; उशीर झाला तर फी लागेल.",
+      "category": "Financial",
+      "riskLevel": "Medium"
+    },
+    {
+      "id": "c-2",
+      "title": "समाप्ती",
+      "originalText": "30 दिवसांच्या नोटिसवर करार समाप्त करता येतो.",
+      "simplifiedText": "30 दिवसांच्या नोटिसवर करार संपुष्टात येईल.",
+      "category": "Termination",
+      "riskLevel": "Medium"
+    }
+  ],
+  "summary": "हा भाडेकरार भाडे, समाप्ती नियम आणि जबाबदाऱ्या स्पष्ट करतो.",
+  "notes": ["लेट फीवर लक्ष ठेवा."]
+}

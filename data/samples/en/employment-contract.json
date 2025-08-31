@@ -1,0 +1,32 @@
+{
+  "id": "sample-en-employment",
+  "title": "Employment Contract",
+  "language": "en",
+  "parties": [{ "name": "Employer", "role": "Employer" }, { "name": "Employee", "role": "Employee" }],
+  "effectiveDate": "2025-03-01",
+  "obligations": [
+    "Employee shall follow company policies.",
+    "Employer must pay salary on the last working day of each month.",
+    "Confidentiality shall be maintained."
+  ],
+  "clauses": [
+    {
+      "id": "c-1",
+      "title": "Confidentiality",
+      "originalText": "Employee shall not disclose confidential information.",
+      "simplifiedText": "Keep company secrets private.",
+      "category": "Compliance",
+      "riskLevel": "Low"
+    },
+    {
+      "id": "c-2",
+      "title": "Termination",
+      "originalText": "Either party may terminate with two weeks notice.",
+      "simplifiedText": "Job can end with two weeks notice from either side.",
+      "category": "Termination",
+      "riskLevel": "Medium"
+    }
+  ],
+  "summary": "Defines employment terms, confidentiality, compensation, and termination notice.",
+  "notes": ["Consider severance terms.", "Review non-compete if any."]
+}

@@ -1,0 +1,43 @@
+{
+  "id": "sample-en-rental",
+  "title": "Residential Rental Agreement",
+  "language": "en",
+  "parties": [{ "name": "Lessor", "role": "Lessor" }, { "name": "Lessee", "role": "Lessee" }],
+  "effectiveDate": "2025-01-15",
+  "terminationDate": "2026-01-14",
+  "obligations": [
+    "Lessee shall pay monthly rent by the 5th.",
+    "Lessee must maintain the premises in good condition.",
+    "Lessor shall provide 30 days notice before termination.",
+    "Lessee agrees to comply with local regulations.",
+    "Late fee applies after the 5th of each month."
+  ],
+  "clauses": [
+    {
+      "id": "c-1",
+      "title": "Rent and Payment",
+      "originalText": "Rent is due on the 1st of each month. Late fee will apply after the 5th.",
+      "simplifiedText": "Pay monthly rent on time; late payments incur a fee.",
+      "category": "Financial",
+      "riskLevel": "Medium"
+    },
+    {
+      "id": "c-2",
+      "title": "Termination",
+      "originalText": "Either party may terminate with a 30-day written notice. Immediate termination on material breach.",
+      "simplifiedText": "You can end the lease with 30 days notice; serious breach ends it immediately.",
+      "category": "Termination",
+      "riskLevel": "Medium"
+    },
+    {
+      "id": "c-3",
+      "title": "Liability and Indemnity",
+      "originalText": "Lessee shall indemnify Lessor against claims arising from misuse of the premises.",
+      "simplifiedText": "Tenant covers costs if misuse leads to claims against landlord.",
+      "category": "Legal",
+      "riskLevel": "High"
+    }
+  ],
+  "summary": "This rental agreement outlines rent due dates, termination rules, and liability. Tenants must comply with local laws and maintain the property.",
+  "notes": ["Late fees may add up quickly.", "Understand indemnity obligations."]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "sample-hi-employment",
+  "title": "रोज़गार अनुबंध",
+  "language": "hi",
+  "parties": [{ "name": "नियोक्ता", "role": "Employer" }, { "name": "कर्मचारी", "role": "Employee" }],
+  "effectiveDate": "2025-03-01",
+  "obligations": ["कर्मचारी कंपनी नीतियों का पालन करेगा।", "वेतन प्रत्येक माह के अंतिम कार्य दिवस पर देय है।"],
+  "clauses": [
+    {
+      "id": "c-1",
+      "title": "गोपनीयता",
+      "originalText": "कर्मचारी गोपनीय जानकारी साझा नहीं करेगा।",
+      "simplifiedText": "कंपनी के रहस्य सुरक्षित रखें।",
+      "category": "Compliance",
+      "riskLevel": "Low"
+    }
+  ],
+  "summary": "रोज़गार की शर्तें, गोपनीयता और वेतन का विवरण।",
+  "notes": ["सेवरेंस पर विचार करें।"]
+}

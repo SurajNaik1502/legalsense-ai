@@ -1,0 +1,20 @@
+{
+  "id": "sample-mr-employment",
+  "title": "रोजगार करार",
+  "language": "mr",
+  "parties": [{ "name": "नियोक्ता", "role": "Employer" }, { "name": "कर्मचारी", "role": "Employee" }],
+  "effectiveDate": "2025-03-01",
+  "obligations": ["קर्मचारी कंपनी धोरणांचे पालन करेल.", "पगार प्रत्येक महिन्याच्या शेवटच्या कार्यदिवशी देय."],
+  "clauses": [
+    {
+      "id": "c-1",
+      "title": "गोपनीयता",
+      "originalText": "कर्मचारी गोपनीय माहिती उघड करणार नाही.",
+      "simplifiedText": "कंपनीची गोपनीय माहिती सुरक्षित ठेवा.",
+      "category": "Compliance",
+      "riskLevel": "Low"
+    }
+  ],
+  "summary": "रोजगाराची अटी, गोपनीयता आणि पगाराचे नियम.",
+  "notes": ["सेव्हरन्स विचारात घ्या."]
+}
