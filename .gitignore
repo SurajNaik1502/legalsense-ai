@@ -27,5 +27,6 @@ yarn-error.log*
 next-env.d.ts
 pnpm-lock.yaml
 venv
-__pycache__
+__pycache__/
+**/__pycache__/
 uploads
