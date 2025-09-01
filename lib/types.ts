@@ -27,11 +27,13 @@ export type ParsedDocument = {
   notes?: string[]
 }
 
+export type RiskCategory = {
+  category: "Financial" | "Legal" | "Compliance" | "Termination"
+  score: number // 0-100
+}
+
 export type RiskOverview = {
-  byCategory: {
-    category: "Financial" | "Legal" | "Compliance" | "Termination"
-    score: number // 0-100
-  }[]
+  by_category: RiskCategory[]
   recommendations: string[]
 }
 

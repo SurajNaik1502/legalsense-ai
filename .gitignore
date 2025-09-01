@@ -25,3 +25,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+pnpm-lock.yaml
+venv
+__pycache__/
+**/__pycache__/
+uploads
